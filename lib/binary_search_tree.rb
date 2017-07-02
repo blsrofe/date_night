@@ -3,48 +3,44 @@ require './lib/node'
 
 class BinarySearchTree
 
-  attr_accessor   :root_node_score,
-                  :root_node_title,
-                  :root_node_depth,
-                  :left_node,
-                  :right_node
+  attr_accessor   :root_node
 
-  def initialize(root_node_score = nil, root_node_title = "", root_node_depth = 0, left_node = nil, right_node = nil)
-
-    @root_node_score = root_node_score
-    @root_node_title = root_node_title
-    @root_node_depth = root_node_depth
-    @left_node = left_node
-    @right_node = right_node
-
+  def initialize
+    @root_node = nil
   end
 
   def insert(score, title)
-    if self.root_node_score == nil
-      @root_node_score = score
-      @root_node_title = title
+    if @root_node == nil
+      node = Node.new(score, title)
+      @root_node = node
+      node.depth = 0
     else
-      evaluate_direction(score, title)
+      # @root_node.left_node = node
+      insert_left_or_right(score,title)
     end
   end
 
-  def evaluate_direction(score, title)
-    current_node = Node.new(score, title)
-    if current_node.score < self.root_node_score
-      self.left_node = current_node
-    else
-      self.right_node = current_node
-    end
+  def insert_left_or_right(score, title)
+    if score > @root.score
+      insert_right(score, title)
+    else score < @root.score
+      insert_left(score, title)
   end
 
+  def insert_right(score, title)
+    
+  end
 
+  def insert_left(score, title)
+
+  end
 
 end
 
 tree = BinarySearchTree.new
 tree.insert(23, "movie")
-tree.insert(12, "movie2")
-puts tree.left_node
+puts tree.root_node
+
 
 
 
