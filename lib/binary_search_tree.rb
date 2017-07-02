@@ -29,6 +29,12 @@ class BinarySearchTree
   end
 
   def evaluate_direction(score, title)
+    current_node = Node.new(score, title)
+    if current_node.score < self.root_node_score
+      self.left_node = current_node
+    else
+      self.right_node = current_node
+    end
   end
 
 
@@ -38,6 +44,8 @@ end
 tree = BinarySearchTree.new
 tree.insert(23, "movie")
 tree.insert(12, "movie2")
+puts tree.left_node
+
 
 
 
