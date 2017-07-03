@@ -18,7 +18,19 @@ class BinarySearchTree
     end
   end
 
-  
+  def include?(include_score, right_node = nil, left_node = nil)
+    if @root_node.score == include_score
+      true
+    elsif @root_node.score != include_score && @root_node.left = nil && @root_node.right == nil
+      false
+    elsif @root_node.left = nil
+      right_node = @root_node.right
+      #recursion
+    else @root_node.right = nil
+      left_node = @root_node.left
+      #recursion
+  end
+
 
 end
 
@@ -31,8 +43,6 @@ end
 #puts tree.root_node.right.depth
 #puts tree.root_node.left.depth
 
-#depth counter is not incrementing
-#test file is returning go left and go right instead of integer for depth
 
 
 

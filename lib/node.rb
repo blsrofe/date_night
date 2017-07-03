@@ -46,4 +46,10 @@ class Node
     end
   end
 
+  def traverse(include_score)
+    if @right && @left == nil
+
+
+  end
+
 end
