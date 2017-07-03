@@ -46,10 +46,21 @@ class Node
     end
   end
 
-  def traverse(include_score)
-    if @right && @left == nil
-
-
+  def include?(include_score, current_node)
+    while current_node != nil
+      if current_node.score == include_score
+        return true
+      elsif include_score < current_node.score
+        current_node = @left
+        current_node.include?(include_score, current_node)
+      elsif include_score > current_node.score
+        current_node = @right
+        current_node.include?(include_score, current_node)
+      end
+    end
+      false
   end
+
+
 
 end

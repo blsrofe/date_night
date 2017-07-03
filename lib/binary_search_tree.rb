@@ -18,17 +18,11 @@ class BinarySearchTree
     end
   end
 
-  def include?(include_score, right_node = nil, left_node = nil)
+  def include?(include_score)
     if @root_node.score == include_score
-      true
-    elsif @root_node.score != include_score && @root_node.left = nil && @root_node.right == nil
-      false
-    elsif @root_node.left = nil
-      right_node = @root_node.right
-      #recursion
-    else @root_node.right = nil
-      left_node = @root_node.left
-      #recursion
+    else
+      root_node.include?(include_score, @root_node)
+    end
   end
 
 

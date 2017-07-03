@@ -32,7 +32,7 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 1, tree.insert(92, "Sharknado 3")
   end
 
-  def verify_presence_of_score_in_tree
+  def test_verify_presence_of_score_in_tree
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     tree.insert(16, "Johnny English")
@@ -41,8 +41,12 @@ class BinarySearchTreeTest < Minitest::Test
     assert tree.include?(16)
   end
 
-  def reject_presence_of_score_in_tree
-    skip
+  def test_reject_presence_of_score_in_tree
+    tree = BinarySearchTree.new
+    tree.insert(61, "Bill & Ted's Excellent Adventure")
+    tree.insert(16, "Johnny English")
+    tree.insert(92, "Sharknado 3")
+    tree.insert(50, "Hannibal Buress: Animal Furnace")
     refute tree.include?(72)
   end
 
