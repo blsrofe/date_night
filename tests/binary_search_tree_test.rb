@@ -10,6 +10,17 @@ class BinarySearchTreeTest < Minitest::Test
     assert_instance_of BinarySearchTree, tree
   end
 
+  def test_root_is_nil_when_instantiated
+    tree = BinarySearchTree.new
+    assert_nil tree.root_node
+  end
+
+  def test_root_has_score_after_one_insertion
+    tree = BinarySearchTree.new
+    tree.insert(61, "Bill & Ted's Excellent Adventure")
+    assert_equal 61, tree.root_node.score
+  end
+
   # def insert_method_returns_depth
   #   skip
   #   assert_equal 0,tree.insert(90, "movie_name")

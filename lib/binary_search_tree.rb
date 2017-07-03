@@ -9,37 +9,46 @@ class BinarySearchTree
     @root_node = nil
   end
 
-  def insert(score, title)
+  def insert(score, title, node = @root_node)
     if @root_node == nil
-      node = Node.new(score, title)
-      @root_node = node
-      node.depth = 0
+       @root_node =  Node.new(score, title)
     else
-      # @root_node.left_node = node
-      insert_left_or_right(score,title)
+      case node.score <=> score
+      when -1 then go_right(score, title, node)
+      when 1 then go_left(score, title, node)
+      when 0 then return "This is a duplicate score."
     end
   end
 
-  def insert_left_or_right(score, title)
-    if score > @root.score
-      insert_right(score, title)
-    else score < @root.score
-      insert_left(score, title)
+  def go_right(score, title, node)
+    if node.right == nil
+      node.right = Node.new(score, title)
+    else
+      node = node.right
+      node.insert(score, title, node)
+    end
   end
 
-  def insert_right(score, title)
-    
+  def go_left(score, title, node)
+    if node.left == nil
+      node.left = Node.new(score, title)
+    else
+      node = node.left
+      node.insert(score, title, node)
+    end
   end
 
-  def insert_left(score, title)
-
   end
+
 
 end
 
 tree = BinarySearchTree.new
 tree.insert(23, "movie")
-puts tree.root_node
+tree.insert(43, "movie_name")
+puts tree.root_node.right.score
+puts tree.root_node.score
+
 
 
 

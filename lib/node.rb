@@ -5,21 +5,17 @@ class Node
               :title
 
 
-  attr_accessor :left_node,
-                :right_node,
+  attr_accessor :left,
+                :right,
                 :depth
 
 
-  def initialize(score, title, left_node = nil, right_node = nil, depth = nil)
+  def initialize(score, title, left = nil, right = nil, depth = nil)
     @score = score
     @title = title
-    @left_node = left_node
-    @right_node = right_node
+    @left = left
+    @right = right
     @depth = depth
   end
 
 end
-
-current_node = Node.new(nil, "hello")
-left_node = Node.new(nil, "")
-right_node = Node.new(nil, "")
