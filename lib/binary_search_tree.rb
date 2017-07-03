@@ -12,11 +12,17 @@ class BinarySearchTree
   def insert(score, title, node = @root_node)
     if @root_node == nil
        @root_node =  Node.new(score, title)
+       @root_node.depth
     else
-      case node.score <=> score
-      when -1 then go_right(score, title, node)
-      when 1 then go_left(score, title, node)
-      when 0 then return "This is a duplicate score."
+      evaluate_direction(score, title, node)
+    end
+  end
+
+  def evaluate_direction(score, title, node)
+    case node.score <=> score
+    when -1 then go_right(score, title, node)
+    when 1 then go_left(score, title, node)
+    when 0 then return "This is a duplicate score."
     end
   end
 
@@ -38,16 +44,19 @@ class BinarySearchTree
     end
   end
 
-  end
-
-
 end
 
-tree = BinarySearchTree.new
-tree.insert(23, "movie")
-tree.insert(43, "movie_name")
-puts tree.root_node.right.score
-puts tree.root_node.score
+
+
+
+# tree = BinarySearchTree.new
+# tree.insert(61, "Bill and Ted's Excellent Adventure")
+#tree.insert(16, "Johnny English")
+#puts tree.root_node.right.depth
+#puts tree.root_node.left.depth
+
+#depth counter is not incrementing
+#test file is returning go left and go right instead of integer for depth
 
 
 

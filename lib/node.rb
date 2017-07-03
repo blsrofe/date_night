@@ -1,21 +1,19 @@
 require 'pry'
 class Node
 
-  attr_reader :score,
-              :title
-
-
-  attr_accessor :left,
+  attr_accessor :score,
+                :title,
+                :depth,
                 :right,
-                :depth
+                :left
 
 
-  def initialize(score, title, left = nil, right = nil, depth = nil)
+  def initialize(score, title, depth = 0, right = nil, left = nil)
     @score = score
     @title = title
-    @left = left
-    @right = right
     @depth = depth
+    @right = right
+    @left = left
   end
 
 end

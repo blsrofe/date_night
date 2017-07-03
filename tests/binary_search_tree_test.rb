@@ -21,10 +21,17 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 61, tree.root_node.score
   end
 
-  # def insert_method_returns_depth
-  #   skip
-  #   assert_equal 0,tree.insert(90, "movie_name")
-  # end
+  def test_insert_method_returns_depth
+    tree = BinarySearchTree.new
+    assert_equal 0, tree.insert(61, "Bill & Ted's Excellent Adventure")
+  end
+
+  def test_insert_method_returns_depth_again
+    tree = BinarySearchTree.new
+    tree.insert(61, "Bill & Ted's Excellent Adventure")
+    assert_equal 0, tree.insert(92, "Sharknado 3")
+  end
+
   #
   # def verify_presence_of_score_in_tree
   #   skip
