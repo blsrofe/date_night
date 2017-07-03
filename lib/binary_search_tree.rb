@@ -14,35 +14,11 @@ class BinarySearchTree
        @root_node =  Node.new(score, title)
        @root_node.depth
     else
-      evaluate_direction(score, title, node)
+      root_node.insert(score, title)
     end
   end
 
-  def evaluate_direction(score, title, node)
-    case node.score <=> score
-    when -1 then go_right(score, title, node)
-    when 1 then go_left(score, title, node)
-    when 0 then return "This is a duplicate score."
-    end
-  end
-
-  def go_right(score, title, node)
-    if node.right == nil
-      node.right = Node.new(score, title)
-    else
-      node = node.right
-      node.insert(score, title, node)
-    end
-  end
-
-  def go_left(score, title, node)
-    if node.left == nil
-      node.left = Node.new(score, title)
-    else
-      node = node.left
-      node.insert(score, title, node)
-    end
-  end
+  
 
 end
 
