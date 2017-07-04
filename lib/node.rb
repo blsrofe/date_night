@@ -47,18 +47,17 @@ class Node
   end
 
   def include?(include_score, current_node)
-    while current_node != nil
       if current_node.score == include_score
         return true
       elsif include_score < current_node.score
         current_node = @left
+        return false if current_node == nil
         current_node.include?(include_score, current_node)
       elsif include_score > current_node.score
         current_node = @right
+        return false if current_node == nil
         current_node.include?(include_score, current_node)
       end
-    end
-      false
   end
 
 

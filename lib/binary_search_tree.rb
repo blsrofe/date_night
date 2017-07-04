@@ -19,7 +19,8 @@ class BinarySearchTree
   end
 
   def include?(include_score)
-    if @root_node.score == include_score
+    if root_node.score == include_score
+      true
     else
       root_node.include?(include_score, @root_node)
     end
