@@ -98,22 +98,26 @@ class Node
   end
 
   def sort(current_node)
-    node = current_node.start_at_min(current_node)#returns minimum value node
-    node.add_to_collection(node)
+    if current_node.right == nil and current_node.left == nil
+      current_node.add_to_collection(current_node)
+    # elsif current_node.right == nil
+    #     current_node = current_node.left
+    #     current_node.add_to_collection(current_node)
+    #     current_node.sort(current_node)
+    # elsif current_node.left == nil
+    #   current_node = current_node.right
+    #   current_node.add_to_collection(current_node)
+    #   current_node.sort(current_node)
+    # elsif current_node.right != nil and current_node.left != nil
+    #   current_node = current_node.left
+    #   current_node.add_to_collection(current_node)
+    #   current_node.sort(current_node)
+      end
   end
 
-  def start_at_min(current_node)
-    if current_node.left == nil
-      current_node
-    else
-      current_node = current_node.left
-      current_node.start_at_min(current_node)
-    end
-  end
-
-  def add_to_collection(node)
-    movie_collection = []
+  def add_to_collection(node, movie_collection = [])
     movie_collection << node.data
+    movie_collection
   end
 
 end
