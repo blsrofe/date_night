@@ -66,7 +66,6 @@ class BinarySearchTreeTest < Minitest::Test
   end
 
   def test_which_movie_has_lowest_score
-    
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     tree.insert(16, "Johnny English")
@@ -75,6 +74,13 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal ({"Johnny English"=>16}), tree.min
   end
 
-end
+  def test_knows_the_depth_of_each_score
+    tree = BinarySearchTree.new
+    tree.insert(61, "Bill & Ted's Excellent Adventure")
+    tree.insert(16, "Johnny English")
+    tree.insert(92, "Sharknado 3")
+    tree.insert(50, "Hannibal Buress: Animal Furnace")
+    assert_equal 1, tree.depth_of(92)
+  end
 
-# file will run with no errors but it does not show any assertions
+end

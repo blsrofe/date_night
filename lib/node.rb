@@ -81,6 +81,20 @@ class Node
     end
   end
 
+  def depth_of(depth_score, current_node)
+      if current_node.score == depth_score
+        current_node.depth
+      elsif depth_score < current_node.score
+        current_node = @left
+        return nil if current_node == nil
+        current_node.depth_of(depth_score, current_node)
+      elsif depth_score > current_node.score
+        current_node = @right
+        return nil if current_node == nil
+        current_node.depth_of(depth_score, current_node)
+      end
+  end
+
 
 
 end

@@ -30,6 +30,9 @@ class BinarySearchTree
       root_node.min(@root_node)
   end
 
+  def depth_of(score)
+    root_node.depth_of(score, @root_node)
+  end
 
 end
 
