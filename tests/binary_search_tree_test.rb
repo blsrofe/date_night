@@ -83,10 +83,13 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 2, tree.depth_of(50)
   end
 
-  def test_returns_array_with_root_movie_data
+  def test_returns_array_with_min_movie_data
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
-    assert_equal ([{"Bill & Ted's Excellent Adventure"=>61}]), tree.sort
+    tree.insert(16, "Johnny English")
+    tree.insert(92, "Sharknado 3")
+    tree.insert(50, "Hannibal Buress: Animal Furnace")
+    assert_equal ([{"Johnny English"=>16}]), tree.sort
   end
 
   def test_returns_array_with_sorted_data

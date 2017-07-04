@@ -98,8 +98,11 @@ class Node
   end
 
   def sort(current_node)
-    if current_node.right == nil and current_node.left == nil
-      current_node.add_to_collection(current_node)
+    node = start_at_lowest_score_node(current_node)
+    add_to_collection(node)
+    # node.next_node(node)
+    # if current_node.right == nil and current_node.left == nil
+    #   current_node.add_to_collection(current_node)
     # elsif current_node.right == nil
     #     current_node = current_node.left
     #     current_node.add_to_collection(current_node)
@@ -112,12 +115,25 @@ class Node
     #   current_node = current_node.left
     #   current_node.add_to_collection(current_node)
     #   current_node.sort(current_node)
-      end
+    #   end
+  end
+
+  def start_at_lowest_score_node(current_node)
+    if current_node.left == nil
+      current_node
+    else
+      current_node = current_node.left
+      current_node.start_at_lowest_score_node(current_node)
+    end
   end
 
   def add_to_collection(node, movie_collection = [])
     movie_collection << node.data
     movie_collection
   end
+
+  # def next_node(current_node)
+  #   if current_node.right !=
+  # end
 
 end
