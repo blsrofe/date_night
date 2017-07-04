@@ -5,15 +5,18 @@ class Node
                 :title,
                 :depth,
                 :right,
-                :left
+                :left,
+                :data
 
 
-  def initialize(score, title, depth = 0, right = nil, left = nil)
+  def initialize(score, title, depth = 0, right = nil, left = nil, data = {})
     @score = score
     @title = title
     @depth = depth
     @right = right
     @left = left
+    @data = data
+    @data[@title] = @score
   end
 
   def insert(new_score, new_title, depth_counter = 0)
@@ -58,6 +61,24 @@ class Node
         return false if current_node == nil
         current_node.include?(include_score, current_node)
       end
+  end
+
+  def max(current_node)
+    if current_node.right == nil
+      current_node.data
+    else
+      current_node = current_node.right
+      current_node.max(current_node)
+    end
+  end
+
+  def min(current_node)
+    if current_node.left == nil
+      current_node.data
+    else
+      current_node = current_node.left
+      current_node.min(current_node)
+    end
   end
 
 

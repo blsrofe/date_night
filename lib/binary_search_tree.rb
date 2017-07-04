@@ -19,11 +19,15 @@ class BinarySearchTree
   end
 
   def include?(include_score)
-    if root_node.score == include_score
-      true
-    else
       root_node.include?(include_score, @root_node)
-    end
+  end
+
+  def max
+      root_node.max(@root_node)
+  end
+
+  def min
+      root_node.min(@root_node)
   end
 
 

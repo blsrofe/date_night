@@ -9,5 +9,5 @@ class NodeTest < Minitest::Test
     node = Node.new(23, "Bill and Ted")
     assert_instance_of Node, node
   end
-
+  
 end
