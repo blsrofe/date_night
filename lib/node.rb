@@ -65,6 +65,20 @@ class Node
       end
   end
 
+  def depth_of(depth_score, current_node)
+      if current_node.score == depth_score
+        current_node.depth
+      elsif depth_score < current_node.score
+        current_node = @left
+        return nil if current_node == nil
+        current_node.depth_of(depth_score, current_node)
+      elsif depth_score > current_node.score
+        current_node = @right
+        return nil if current_node == nil
+        current_node.depth_of(depth_score, current_node)
+      end
+  end
+
   def max(current_node)
     if current_node.right == nil
       current_node.data
@@ -83,20 +97,23 @@ class Node
     end
   end
 
-  def depth_of(depth_score, current_node)
-      if current_node.score == depth_score
-        current_node.depth
-      elsif depth_score < current_node.score
-        current_node = @left
-        return nil if current_node == nil
-        current_node.depth_of(depth_score, current_node)
-      elsif depth_score > current_node.score
-        current_node = @right
-        return nil if current_node == nil
-        current_node.depth_of(depth_score, current_node)
-      end
+  def sort(current_node)
+    node = current_node.start_at_min(current_node)#returns minimum value node
+    node.add_to_collection(node)
   end
 
+  def start_at_min(current_node)
+    if current_node.left == nil
+      current_node
+    else
+      current_node = current_node.left
+      current_node.start_at_min(current_node)
+    end
+  end
 
+  def add_to_collection(node)
+    movie_collection = []
+    movie_collection << node.data
+  end
 
 end

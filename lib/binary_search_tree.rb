@@ -34,16 +34,15 @@ class BinarySearchTree
     root_node.depth_of(score, @root_node)
   end
 
+  def sort
+    root_node.sort(@root_node)
+  end
+
 end
 
 
 
 
-# tree = BinarySearchTree.new
-# tree.insert(61, "Bill and Ted's Excellent Adventure")
-#tree.insert(16, "Johnny English")
-#puts tree.root_node.right.depth
-#puts tree.root_node.left.depth
 
 
 
