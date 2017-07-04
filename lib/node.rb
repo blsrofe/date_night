@@ -31,6 +31,7 @@ class Node
     depth_counter += 1
     if @left == nil
       @left = Node.new(score, title)
+      @left.depth = depth_counter
       depth_counter
     else
       node = @left
@@ -42,6 +43,7 @@ class Node
     depth_counter += 1
     if @right == nil
       @right = Node.new(score, title)
+      @right.depth = depth_counter
       depth_counter
     else
       node = @right
