@@ -39,13 +39,13 @@ class BinarySearchTree
     movie_counter = 0
     movies.each_line do |line|
       split_line = line.strip.split(", ")#=array with 2 strings, score and title
-      # root_node.depth_of(split_line[0]) != nil
+      next if root_node.depth_of(split_line[0].to_i, @root_node) != nil
       movie_counter += 1
       root_node.insert(split_line[0].to_i, split_line[1])
     end
     movies.close
     movie_counter
-end
+  end
 
   def sort
     root_node.sort(@root_node)
