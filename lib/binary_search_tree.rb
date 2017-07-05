@@ -53,13 +53,7 @@ class BinarySearchTree
 
 end
 
-# def sort(node)
-#   if something left
-#     sort(node.left)
-#     add to collection
-#     if sort right
-#       sort(node.right)
-#     end
+
 
 
 
