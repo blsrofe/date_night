@@ -34,11 +34,32 @@ class BinarySearchTree
     root_node.depth_of(score, @root_node)
   end
 
+  def load(file)
+    movies = File.open(file)#read File docs read lines
+    movie_counter = 0
+    movies.each_line do |line|
+      split_line = line.strip.split(", ")#=array with 2 strings, score and title
+      # root_node.depth_of(split_line[0]) != nil
+      movie_counter += 1
+      root_node.insert(split_line[0].to_i, split_line[1])
+    end
+    movies.close
+    movie_counter
+end
+
   def sort
     root_node.sort(@root_node)
   end
 
 end
+
+# def sort(node)
+#   if something left
+#     sort(node.left)
+#     add to collection
+#     if sort right
+#       sort(node.right)
+#     end
 
 
 

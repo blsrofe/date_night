@@ -1,5 +1,4 @@
 require './lib/binary_search_tree'
-require './lib/node'
 require 'minitest/autorun'
 require 'minitest/pride'
 
@@ -83,14 +82,15 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 2, tree.depth_of(50)
   end
 
-  def test_returns_array_with_min_movie_data
-    tree = BinarySearchTree.new
-    tree.insert(61, "Bill & Ted's Excellent Adventure")
-    tree.insert(16, "Johnny English")
-    tree.insert(92, "Sharknado 3")
-    tree.insert(50, "Hannibal Buress: Animal Furnace")
-    assert_equal ([{"Johnny English"=>16}]), tree.sort
-  end
+  # def test_returns_array_with_min_movie_data
+  #
+  #   tree = BinarySearchTree.new
+  #   tree.insert(61, "Bill & Ted's Excellent Adventure")
+  #   tree.insert(16, "Johnny English")
+  #   tree.insert(92, "Sharknado 3")
+  #   tree.insert(50, "Hannibal Buress: Animal Furnace")
+  #   assert_equal ([{"Johnny English"=>16}]), tree.sort
+  # end
 
   def test_returns_array_with_sorted_data
     skip
@@ -101,6 +101,36 @@ class BinarySearchTreeTest < Minitest::Test
     tree.insert(50, "Hannibal Buress: Animal Furnace")
     assert_equal ([{"Johnny English"=>16}, {"Hannibal Buress: Animal Furnace"=>50},
                   {"Bill & Ted's Excellent Adventure"=>61},{"Sharknado 3"=>92}]), tree.sort
+  end
+
+  def test_if_it_can_load_file
+
+    tree = BinarySearchTree.new
+    tree.insert(61, "Bill & Ted's Excellent Adventure")
+    tree.insert(16, "Johnny English")
+    tree.insert(92, "Sharknado 3")
+    tree.insert(50, "Hannibal Buress: Animal Furnace")
+    tree.load("./lib/movies.txt")
+    assert File.exists?("./lib/movies.txt")
+  end
+
+  def test_load_inserts_all_files_to_tree
+    tree = BinarySearchTree.new
+    tree.insert(61, "Bill & Ted's Excellent Adventure")
+    tree.insert(16, "Johnny English")
+    tree.insert(92, "Sharknado 3")
+    tree.insert(50, "Hannibal Buress: Animal Furnace")
+    tree.load("./lib/movies.txt")
+    assert_equal ({"Cruel Intentions"=>0}), tree.min
+  end
+
+  def test_load_returns_number_of_files_inserted
+    tree = BinarySearchTree.new
+    tree.insert(61, "Bill & Ted's Excellent Adventure")
+    tree.insert(16, "Johnny English")
+    tree.insert(92, "Sharknado 3")
+    tree.insert(50, "Hannibal Buress: Animal Furnace")
+    assert_equal 26, tree.load("./lib/movies.txt")
   end
 
 end
