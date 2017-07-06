@@ -54,8 +54,6 @@ class BinarySearchTree
   def health(tree_depth)
     total_nodes = root_node.sort(@root_node).count
     root_node.sort_for_depth(@root_node, tree_depth, total_nodes)
-
-
   end
 
 end

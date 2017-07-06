@@ -114,8 +114,8 @@ class Node
       return
     elsif current_node.depth == tree_depth
         evaluate_children(current_node)
-        percentage = (current_node.children + 1) / total_nodes
-        array = [current_node.score, current_node.children + 1, percentage]
+        percentage = ((current_node.children.to_f / total_nodes.to_f) * 100)
+        array = [current_node.score, current_node.children + 1, percentage.to_i]
         depth_collection << array
     end
     sort_for_depth(current_node.left, tree_depth, total_nodes, depth_collection)

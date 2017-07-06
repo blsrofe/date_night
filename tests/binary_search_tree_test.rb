@@ -123,7 +123,7 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 95, tree.load("./lib/movies.txt")
   end
 
-  def test_health_returns_array_with_score_of_node
+  def test_health_returns_array_with_score_children_and_percentage
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
     tree.insert(58, "Armageddon")
@@ -132,7 +132,7 @@ class BinarySearchTreeTest < Minitest::Test
     tree.insert(86, "Charlie's Angels")
     tree.insert(38, "Charlie's Country")
     tree.insert(69, "Collateral Damage")
-    assert_equal [[36], [93]], tree.health(2)
+    assert_equal [[36, 2, 28], [93, 3, 42]], tree.health(2)
   end
 
 end
