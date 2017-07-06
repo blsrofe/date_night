@@ -115,7 +115,7 @@ class Node
     elsif current_node.depth == tree_depth
         evaluate_children(current_node)
         number_of_children = current_node.children.to_f + 1
-        percentage = (number_of_children / total_nodes.to_f) * 100)
+        percentage = (number_of_children / total_nodes.to_f) * 100
         health_collection = [current_node.score, number_of_children.to_i, percentage.to_i]
         depth_collection << health_collection
     end
@@ -126,10 +126,10 @@ class Node
 
   def evaluate_children(current_node, child_counter = 0)
     if current_node.left == nil && current_node.right == nil
-      @children = 0
+      @children = child_counter
     else
-      go_right_children(current_node, child_counter)
       go_left_children(current_node, child_counter)
+      go_right_children(current_node, child_counter)
     end
   end
 
