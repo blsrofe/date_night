@@ -35,10 +35,10 @@ class BinarySearchTree
   end
 
   def load(file)
-    movies = File.open(file)#read File docs read lines
+    movies = File.open(file)
     movie_counter = 0
     movies.each_line do |line|
-      split_line = line.strip.split(", ")#=array with 2 strings, score and title
+      split_line = line.strip.split(", ")#=returns array with 2 strings, score and title
       next if root_node.depth_of(split_line[0].to_i, @root_node) != nil
       movie_counter += 1
       root_node.insert(split_line[0].to_i, split_line[1])
@@ -49,6 +49,13 @@ class BinarySearchTree
 
   def sort
     root_node.sort(@root_node)
+  end
+
+  def health(tree_depth)
+    total_nodes = root_node.sort(@root_node).count
+    root_node.sort_for_depth(@root_node, tree_depth, total_nodes)
+
+
   end
 
 end

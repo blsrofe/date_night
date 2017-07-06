@@ -6,16 +6,18 @@ class Node
                 :depth,
                 :right,
                 :left,
-                :data
+                :data,
+                :children
 
 
-  def initialize(score, title, depth = 0, right = nil, left = nil, data = {})
+  def initialize(score, title, depth = 0, right = nil, left = nil, children = nil, data = {})
     @score = score
     @title = title
     @depth = depth
     @right = right
     @left = left
     @data = data
+    @children = children
     @data[@title] = @score
   end
 
@@ -105,6 +107,49 @@ class Node
       movie_collection << current_node.data
       sort(current_node.right, movie_collection)
       movie_collection
+  end
+
+  def sort_for_depth(current_node, tree_depth, total_nodes, depth_collection = [])
+    if current_node == nil
+      return
+    elsif current_node.depth == tree_depth
+        evaluate_children(current_node)
+        percentage = (current_node.children + 1) / total_nodes
+        array = [current_node.score, current_node.children + 1, percentage]
+        depth_collection << array
+    end
+    sort_for_depth(current_node.left, tree_depth, total_nodes, depth_collection)
+    sort_for_depth(current_node.right, tree_depth, total_nodes, depth_collection)
+    depth_collection
+  end
+
+  def evaluate_children(current_node, child_counter = 0)
+    if current_node.left == nil && current_node.right == nil
+      @children = 0
+    else
+      go_right_children(current_node, child_counter)
+      go_left_children(current_node, child_counter)
+    end
+  end
+
+  def go_right_children(current_node, child_counter)
+    child_counter += 1
+    if @right == nil
+      @children = child_counter
+    else
+      current_node = @right
+      current_node.evaluate_children(current_node, child_counter)
+    end
+  end
+
+  def go_left_children(current_node, child_counter)
+    child_counter += 1
+    if @left == nil
+      @children = child_counter
+    else
+      current_node = @left
+      current_node.evaluate_children(current_node, child_counter)
+    end
   end
 
 end
